@@ -5,5 +5,5 @@ Het HR-systeem is benodigd om gegevens op te vragen die de RAYCO planner nodig h
 
 #2 SQL-Lite database
 In de file Db.cs is onder de class Db deze functie te vinden: ‘static SQLiteConnection CreateConnection()’. In deze functie kun je de lokale variabele ‘sqlite_conn’ vinden, deze bestaat uit een string die uiteindelijk de verbinding gaat leggen met de database. 
-Het is de bedoeling dat de ‘Data Source’ wordt aangepast naar de locatie die verwijst naar ‘database.db’ die eveneens in rootfolder is te vinden. Mocht hier hulp voor nodig zijn dan kan dit mij persoonlijk worden gevraagd of deze link van de website stackoverflow kan worden geraadpleegd: Stack Overflow.
+Het is de bedoeling dat de ‘Data Source’ wordt aangepast naar de locatie die verwijst naar ‘database.db’ die eveneens in rootfolder is te vinden. Mocht hier hulp voor nodig zijn dan kan dit mij persoonlijk worden gevraagd of deze link van de website stackoverflow kan worden geraadpleegd: https://stackoverflow.com/questions/5001980/app-config-connection-string-relative-path
 
