@@ -53,7 +53,7 @@ namespace HRTOOL_CASUS
 
         public void Inplannen(int hrid,string datum, int weeknummer, int weekdag, string project, string projectsoort)
         {
-            //vanuit deze functie wordt een project ingeplanned en toegevoegd aan de database
+            //vanuit deze functie wordt een project ingepland en toegevoegd aan de database
 
             SQLiteCommand sqlite_cmd;
             sqlite_cmd = sqlite_conn.CreateCommand();
