@@ -251,5 +251,25 @@ namespace HRTOOL_CASUS
             ToolTip1.ForeColor = Color.White;
             ToolTip1.BackColor = Color.Black;
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
