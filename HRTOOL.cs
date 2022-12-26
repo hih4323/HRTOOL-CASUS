@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Globalization;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -27,13 +28,12 @@ namespace hrtool
 
         public static void Main()
         {
-/*            Dashboard dash = new Dashboard();
-            Application.Run(dash);*/
+            Dashboard dash = new Dashboard();
+            Application.Run(dash);
 
-            Inloggen inlog = new Inloggen();
-            Application.Run(inlog);
+            /*            Inloggen inlog = new Inloggen();
+                        Application.Run(inlog);*/
 
         }
     }
-
 }

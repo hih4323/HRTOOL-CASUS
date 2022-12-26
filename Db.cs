@@ -6,6 +6,7 @@ using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HRTOOL_CASUS;
 
 namespace HRTOOL_CASUS
 {
@@ -15,6 +16,8 @@ namespace HRTOOL_CASUS
      de database. Er volgt een kleine uitleg per functie wat er gebeurd: */
 
         private SQLiteConnection sqlite_conn;
+        
+
         public Db()
         {
             
@@ -65,6 +68,20 @@ namespace HRTOOL_CASUS
             sqlite_cmd.Parameters.Add(new SQLiteParameter("@var4", weekdag));
             sqlite_cmd.Parameters.Add(new SQLiteParameter("@var5", project));
             sqlite_cmd.Parameters.Add(new SQLiteParameter("@var6", projectsoort));
+
+            sqlite_cmd.ExecuteNonQuery();
+        }
+
+        public void AanmakenProjectSoort(string ProjectSoort)
+        {
+
+            SQLiteCommand sqlite_cmd;
+            sqlite_cmd = sqlite_conn.CreateCommand();
+            sqlite_cmd.CommandText = "INSERT INTO projectsoort (naam) VALUES(@var1)";
+
+            sqlite_cmd.Parameters.Add(new SQLiteParameter("@var1", ProjectSoort));
+
+
 
             sqlite_cmd.ExecuteNonQuery();
         }
@@ -187,7 +204,7 @@ namespace HRTOOL_CASUS
             SQLiteDataReader sqlite_datareader;
             SQLiteCommand sqlite_cmd;
             sqlite_cmd = sqlite_conn.CreateCommand();
-            sqlite_cmd.CommandText = "SELECT `naam` FROM 'project'";
+            sqlite_cmd.CommandText = "SELECT * FROM 'projectsoort'";
 
             sqlite_datareader = sqlite_cmd.ExecuteReader();
             while (sqlite_datareader.Read())
@@ -223,6 +240,40 @@ namespace HRTOOL_CASUS
             //sqlite_conn.Close();
 
             return lijstprojectsoorten;
+
+        }
+
+        public void ReadDataProjectenSoortPI8()
+        {
+            //Het uitlezen van de database om als object te kunnen invoegen
+
+            RaycoProjectSoorten ps = new RaycoProjectSoorten();
+
+            SQLiteDataReader sqlite_datareader;
+            SQLiteCommand sqlite_cmd;
+            sqlite_cmd = sqlite_conn.CreateCommand();
+            sqlite_cmd.CommandText = "SELECT id,naam FROM 'projectsoort'";
+
+            sqlite_datareader = sqlite_cmd.ExecuteReader();
+            while (sqlite_datareader.Read())
+            {
+
+                string? myreader1 = sqlite_datareader[0].ToString();
+                string? myreader2 = sqlite_datareader[1].ToString();
+
+                Console.WriteLine(myreader1);
+                Console.WriteLine(myreader2);
+
+                Soorten soort = new Soorten(myreader2, Convert.ToInt32(myreader1));
+
+                ps.Aanmaken(soort);
+
+                //ps.Lijst.Add(soort);
+                
+            }
+
+            //sqlite_conn.Close();
+
 
         }
 

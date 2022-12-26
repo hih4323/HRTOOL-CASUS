@@ -46,12 +46,13 @@
             this.button10 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(30, 31);
+            this.button1.Location = new System.Drawing.Point(30, 81);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(102, 23);
             this.button1.TabIndex = 0;
@@ -61,7 +62,7 @@
             // 
             // Werkrooster
             // 
-            this.Werkrooster.Location = new System.Drawing.Point(30, 81);
+            this.Werkrooster.Location = new System.Drawing.Point(30, 135);
             this.Werkrooster.Name = "Werkrooster";
             this.Werkrooster.Size = new System.Drawing.Size(102, 23);
             this.Werkrooster.TabIndex = 1;
@@ -71,7 +72,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(30, 135);
+            this.button3.Location = new System.Drawing.Point(30, 184);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(102, 23);
             this.button3.TabIndex = 2;
@@ -81,7 +82,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(30, 184);
+            this.button4.Location = new System.Drawing.Point(30, 239);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(102, 23);
             this.button4.TabIndex = 3;
@@ -91,7 +92,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(30, 235);
+            this.button5.Location = new System.Drawing.Point(30, 285);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(102, 23);
             this.button5.TabIndex = 4;
@@ -118,7 +119,7 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(30, 475);
+            this.button6.Location = new System.Drawing.Point(30, 524);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(142, 23);
             this.button6.TabIndex = 6;
@@ -129,7 +130,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::HRTOOL_CASUS.Properties.Resources.RAYCO_afbeelding;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 340);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 391);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(174, 96);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -140,7 +141,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(30, 285);
+            this.button2.Location = new System.Drawing.Point(30, 340);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(102, 23);
             this.button2.TabIndex = 8;
@@ -153,9 +154,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(1252, 39);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(96, 15);
+            this.label1.Size = new System.Drawing.Size(99, 15);
             this.label1.TabIndex = 9;
-            this.label1.Text = "Project Soort(en)";
+            this.label1.Text = "Project Soort(en):";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
@@ -163,9 +164,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(1252, 239);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 15);
+            this.label2.Size = new System.Drawing.Size(68, 15);
             this.label2.TabIndex = 10;
-            this.label2.Text = "Project(en)";
+            this.label2.Text = "Project(en):";
             // 
             // button7
             // 
@@ -185,6 +186,7 @@
             this.button8.TabIndex = 12;
             this.button8.Text = "Inzien";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button9
             // 
@@ -224,11 +226,22 @@
             this.button12.UseVisualStyleBackColor = true;
             this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(30, 39);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(57, 15);
+            this.label3.TabIndex = 17;
+            this.label3.Text = "Planning:";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1393, 574);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.button12);
             this.Controls.Add(this.button11);
             this.Controls.Add(this.button10);
@@ -276,5 +289,6 @@
         private Button button10;
         private Button button11;
         private Button button12;
+        private Label label3;
     }
 }

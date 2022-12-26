@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace HRTOOL_CASUS
 {
+    
+
     internal class Project
     {
+        Db db = new();
     }
 }

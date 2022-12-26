@@ -271,5 +271,32 @@ namespace HRTOOL_CASUS
         {
 
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Clear();
+
+            RaycoProjectSoorten ps = new RaycoProjectSoorten();
+            ps.LaadIn();
+            List<Soorten> projectsoorten = ps.Inzien();
+
+            //Soorten soort2 = new Soorten("test", 1);
+
+            //ps.Aanmaken(soort2);
+
+            foreach (var i in projectsoorten)
+            {
+                richTextBox1.AppendText(Convert.ToString(i.id));
+                richTextBox1.AppendText("\t");
+                richTextBox1.AppendText(i.projectsoortnaam);
+             
+                richTextBox1.AppendText("\n");
+            }
+        }
     }
 }
