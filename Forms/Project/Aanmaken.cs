@@ -10,11 +10,24 @@ using System.Windows.Forms;
 
 namespace HRTOOL_CASUS.Forms.Project
 {
-    public partial class BewerkenP : Form
+    public partial class Aanmaken : Form
     {
-        public BewerkenP()
+        private Dashboard dash;
+
+        public Aanmaken(Dashboard dash)
         {
             InitializeComponent();
+            this.dash = dash;
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

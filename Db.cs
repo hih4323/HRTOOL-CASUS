@@ -6,7 +6,6 @@ using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HRTOOL_CASUS;
 
 namespace HRTOOL_CASUS
 {
@@ -204,7 +203,7 @@ namespace HRTOOL_CASUS
             SQLiteDataReader sqlite_datareader;
             SQLiteCommand sqlite_cmd;
             sqlite_cmd = sqlite_conn.CreateCommand();
-            sqlite_cmd.CommandText = "SELECT * FROM 'projectsoort'";
+            sqlite_cmd.CommandText = "SELECT naam FROM 'project'";
 
             sqlite_datareader = sqlite_cmd.ExecuteReader();
             while (sqlite_datareader.Read())
@@ -243,11 +242,12 @@ namespace HRTOOL_CASUS
 
         }
 
-        public void ReadDataProjectenSoortPI8()
+        public List<Soorten> ReadDataProjectenSoortPI8()
         {
             //Het uitlezen van de database om als object te kunnen invoegen
 
             RaycoProjectSoorten ps = new RaycoProjectSoorten();
+            List<Soorten> Lijst = new List<Soorten>();
 
             SQLiteDataReader sqlite_datareader;
             SQLiteCommand sqlite_cmd;
@@ -261,20 +261,61 @@ namespace HRTOOL_CASUS
                 string? myreader1 = sqlite_datareader[0].ToString();
                 string? myreader2 = sqlite_datareader[1].ToString();
 
-                Console.WriteLine(myreader1);
-                Console.WriteLine(myreader2);
-
                 Soorten soort = new Soorten(myreader2, Convert.ToInt32(myreader1));
 
-                ps.Aanmaken(soort);
+                Lijst.Add(soort);
 
-                //ps.Lijst.Add(soort);
-                
             }
 
+            return Lijst;
+
             //sqlite_conn.Close();
+        }
 
+        public List<Projecten> ReadDataProjectenPI8()
+        {
+            //Het uitlezen van de database om als object te kunnen invoegen
 
+            RaycoProjecten ps = new RaycoProjecten();
+            List<Projecten> Lijst = new List<Projecten>();
+
+            SQLiteDataReader sqlite_datareader;
+            SQLiteCommand sqlite_cmd;
+            sqlite_cmd = sqlite_conn.CreateCommand();
+            sqlite_cmd.CommandText = "SELECT * FROM 'project'";
+
+            sqlite_datareader = sqlite_cmd.ExecuteReader();
+            while (sqlite_datareader.Read())
+            {
+
+                string? myreader1 = sqlite_datareader[0].ToString();
+                string? myreader2 = sqlite_datareader[1].ToString();
+                string? myreader3 = sqlite_datareader[2].ToString();
+                string? myreader4 = sqlite_datareader[3].ToString();
+                string? myreader5 = sqlite_datareader[4].ToString();
+                string? myreader6 = sqlite_datareader[5].ToString();
+                string? myreader7 = sqlite_datareader[6].ToString();
+                string? myreader8 = sqlite_datareader[7].ToString();
+
+                Projecten pro = new Projecten
+                    (
+                    Convert.ToInt32(myreader1),
+                                    myreader2,
+                    Convert.ToInt32(myreader3),
+                    Convert.ToInt32(myreader4),
+                    Convert.ToInt32(myreader5),
+                    Convert.ToInt32(myreader6),
+                    Convert.ToInt32(myreader7),
+                                    myreader8
+                    );
+
+                Lijst.Add(pro);
+
+            }
+
+            return Lijst;
+
+            //sqlite_conn.Close();
         }
 
         public List<int> ReadInzetUren(int hrid, int weeknummer)

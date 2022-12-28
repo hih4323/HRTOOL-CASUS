@@ -170,7 +170,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(1252, 81);
+            this.button7.Location = new System.Drawing.Point(1252, 164);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(102, 23);
             this.button7.TabIndex = 11;
@@ -180,7 +180,7 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(1252, 135);
+            this.button8.Location = new System.Drawing.Point(1252, 81);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(102, 23);
             this.button8.TabIndex = 12;
@@ -190,7 +190,7 @@
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(1252, 184);
+            this.button9.Location = new System.Drawing.Point(1252, 123);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(102, 23);
             this.button9.TabIndex = 13;
@@ -200,27 +200,29 @@
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(1252, 391);
+            this.button10.Location = new System.Drawing.Point(1252, 318);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(102, 23);
+            this.button10.Size = new System.Drawing.Size(99, 23);
             this.button10.TabIndex = 14;
             this.button10.Text = "Bewerken";
             this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(1252, 340);
+            this.button11.Location = new System.Drawing.Point(1252, 275);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(102, 23);
             this.button11.TabIndex = 15;
             this.button11.Text = "Inzien";
             this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // button12
             // 
-            this.button12.Location = new System.Drawing.Point(1252, 285);
+            this.button12.Location = new System.Drawing.Point(1252, 361);
             this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(102, 23);
+            this.button12.Size = new System.Drawing.Size(99, 23);
             this.button12.TabIndex = 16;
             this.button12.Text = "Aanmaken";
             this.button12.UseVisualStyleBackColor = true;

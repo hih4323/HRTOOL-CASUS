@@ -1,4 +1,6 @@
 ﻿using hrtool;
+using HRTOOL_CASUS.Forms.Project;
+using HRTOOL_CASUS.Forms.ProjectSoort;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -19,6 +21,8 @@ using static System.Net.Mime.MediaTypeNames;
 using static System.Net.WebRequestMethods;
 using static System.Windows.Forms.DataFormats;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Aanmaken = HRTOOL_CASUS.Forms.ProjectSoort.Aanmaken;
+using Bewerken = HRTOOL_CASUS.Forms.Project.Bewerken;
 using Image = System.Drawing.Image;
 
 namespace HRTOOL_CASUS
@@ -259,16 +263,32 @@ namespace HRTOOL_CASUS
 
         private void button9_Click(object sender, EventArgs e)
         {
+            richTextBox1.Clear();
 
+            //Bewerken bewerken = new Bewerken(this);
+
+            HRTOOL_CASUS.Forms.ProjectSoort.Bewerken bewerken = new Forms.ProjectSoort.Bewerken(this);
+
+            bewerken.Show();
         }
 
         private void button12_Click(object sender, EventArgs e)
         {
+            richTextBox1.Clear();
+
+            HRTOOL_CASUS.Forms.Project.Aanmaken aanmaken = new Forms.Project.Aanmaken(this);
+
+            aanmaken.Show();
 
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
+            richTextBox1.Clear();
+
+            Aanmaken aanmaken = new Aanmaken(this);
+
+            aanmaken.Show();
 
         }
 
@@ -285,10 +305,6 @@ namespace HRTOOL_CASUS
             ps.LaadIn();
             List<Soorten> projectsoorten = ps.Inzien();
 
-            //Soorten soort2 = new Soorten("test", 1);
-
-            //ps.Aanmaken(soort2);
-
             foreach (var i in projectsoorten)
             {
                 richTextBox1.AppendText(Convert.ToString(i.id));
@@ -297,6 +313,49 @@ namespace HRTOOL_CASUS
              
                 richTextBox1.AppendText("\n");
             }
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Clear();
+
+            Inzien inzien = new Inzien(this); 
+            inzien.Show();
+
+            RaycoProjecten proj = new RaycoProjecten();
+            proj.Inladen();
+            List<Projecten> projecten = proj.Inzien();
+
+            foreach (var i in projecten)
+            {
+                richTextBox1.AppendText(Convert.ToString(i.id));
+                richTextBox1.AppendText("\t");
+                richTextBox1.AppendText(Convert.ToString(i.duur));
+                richTextBox1.AppendText("\t");
+                richTextBox1.AppendText(Convert.ToString(i.duurmin));
+                richTextBox1.AppendText("\t");
+                richTextBox1.AppendText(Convert.ToString(i.duurmax));
+                richTextBox1.AppendText("\t");
+                richTextBox1.AppendText(Convert.ToString(i.prio));
+                richTextBox1.AppendText("\t");
+                richTextBox1.AppendText(Convert.ToString(i.stap));
+                richTextBox1.AppendText("\t");
+                richTextBox1.AppendText(i.projectsoort);
+                richTextBox1.AppendText("           ");
+                richTextBox1.AppendText(i.projectnaam);
+
+                richTextBox1.AppendText("\n");
+            }
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Clear();
+
+            Bewerken bewerken = new Bewerken(this);
+            bewerken.Show();
+
+
         }
     }
 }

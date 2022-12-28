@@ -10,11 +10,14 @@ using System.Windows.Forms;
 
 namespace HRTOOL_CASUS.Forms.Project
 {
-    public partial class AanmakenP : Form
+    public partial class Inzien : Form
     {
-        public AanmakenP()
+        private Dashboard dash;
+
+        public Inzien(Dashboard dash)
         {
             InitializeComponent();
+            this.dash = dash;
         }
     }
 }

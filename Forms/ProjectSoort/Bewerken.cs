@@ -10,11 +10,14 @@ using System.Windows.Forms;
 
 namespace HRTOOL_CASUS.Forms.ProjectSoort
 {
-    public partial class AanmakenPS : Form
+    public partial class Bewerken : Form
     {
-        public AanmakenPS()
+        private Dashboard dash;
+
+        public Bewerken(Dashboard dash)
         {
             InitializeComponent();
+            this.dash = dash;
         }
     }
 }

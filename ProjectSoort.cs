@@ -35,12 +35,14 @@ namespace HRTOOL_CASUS
 
         public override void LaadIn()
         {
-            db.ReadDataProjectenSoortPI8();
-           
+            Lijst = db.ReadDataProjectenSoortPI8(); 
         }
         public override void Aanmaken(Soorten soorten)
         {
+            LaadIn();
             Lijst.Add(soorten);
+
+            //functie wegschrijven naar db
         }
 
         public override void Bewerken()
@@ -66,11 +68,7 @@ namespace HRTOOL_CASUS
             this.projectsoortnaam = projectsoortnaam;
             this.id = id;
         }
-
-/*        public override string ToString()
-        {
-            return "\t" + projectsoortnaam + "\t" + id.ToString();
-        }*/
+ 
     }
 
 }

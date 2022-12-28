@@ -8,13 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace HRTOOL_CASUS.Forms.Project
+namespace HRTOOL_CASUS.Forms.ProjectSoort
 {
-    public partial class InzienP : Form
+    public partial class Aanmaken : Form
     {
-        public InzienP()
+        private Dashboard dash;
+        public Aanmaken(Dashboard dash)
         {
             InitializeComponent();
+            this.dash = dash;
         }
     }
 }
