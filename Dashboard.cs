@@ -264,12 +264,23 @@ namespace HRTOOL_CASUS
         private void button9_Click(object sender, EventArgs e)
         {
             richTextBox1.Clear();
-
-            //Bewerken bewerken = new Bewerken(this);
-
             HRTOOL_CASUS.Forms.ProjectSoort.Bewerken bewerken = new Forms.ProjectSoort.Bewerken(this);
-
             bewerken.Show();
+
+            RaycoProjectSoorten ps = new RaycoProjectSoorten();
+            ps.LaadIn();
+            List<Soorten> projectsoorten = ps.Inzien();
+
+            richTextBox1.AppendText("ID\tNAAM\n\n");
+
+            foreach (var i in projectsoorten)
+            {
+                richTextBox1.AppendText(Convert.ToString(i.id));
+                richTextBox1.AppendText("\t");
+                richTextBox1.AppendText(i.projectsoortnaam);
+                richTextBox1.AppendText("\n");
+            }
+
         }
 
         private void button12_Click(object sender, EventArgs e)
@@ -305,13 +316,50 @@ namespace HRTOOL_CASUS
             ps.LaadIn();
             List<Soorten> projectsoorten = ps.Inzien();
 
+            RaycoProjecten rp = new RaycoProjecten();
+            rp.Inladen();
+            List<Projecten> projecten = rp.Inzien();
+
             foreach (var i in projectsoorten)
             {
                 richTextBox1.AppendText(Convert.ToString(i.id));
                 richTextBox1.AppendText("\t");
                 richTextBox1.AppendText(i.projectsoortnaam);
-             
                 richTextBox1.AppendText("\n");
+
+                int mintijdprio10 = 0;
+                int maxtijdprio10 = 0;
+                int mintijdprio1 = 0;
+                int maxtijdprio1 = 0;
+
+                foreach (var j in projecten)
+                {
+                    if (i.projectsoortnaam == j.projectsoort)
+                    {
+                        if (j.prio == 1 || j.prio == 0)
+                        {   
+                            mintijdprio10+= j.duurmin;
+                            maxtijdprio10+= j.duurmax; 
+                        }
+
+                        if (j.prio == 1 )
+                        {                     
+                            mintijdprio1+= j.duurmin;
+                            maxtijdprio1+= j.duurmax;
+                        }
+
+                    }
+
+                }
+
+                richTextBox1.AppendText("\t");
+                richTextBox1.AppendText($"Uitvoeren van alle prioriteiten in uren:\n\tMIN TIJD= {mintijdprio10}\n\tMAX TIJD= {maxtijdprio10}");
+
+                richTextBox1.AppendText("\n\t");
+                richTextBox1.AppendText($"Niet uitvoeren van alle prioriteiten in uren:\n\tMIN TIJD= {mintijdprio1}\n\tMAX TIJD= {maxtijdprio1}");
+
+                richTextBox1.AppendText("\n");
+                richTextBox1.AppendText("__________________________________________________________________________________________________\n\n");
             }
         }
 
@@ -322,30 +370,7 @@ namespace HRTOOL_CASUS
             Inzien inzien = new Inzien(this); 
             inzien.Show();
 
-            RaycoProjecten proj = new RaycoProjecten();
-            proj.Inladen();
-            List<Projecten> projecten = proj.Inzien();
-
-            foreach (var i in projecten)
-            {
-                richTextBox1.AppendText(Convert.ToString(i.id));
-                richTextBox1.AppendText("\t");
-                richTextBox1.AppendText(Convert.ToString(i.duur));
-                richTextBox1.AppendText("\t");
-                richTextBox1.AppendText(Convert.ToString(i.duurmin));
-                richTextBox1.AppendText("\t");
-                richTextBox1.AppendText(Convert.ToString(i.duurmax));
-                richTextBox1.AppendText("\t");
-                richTextBox1.AppendText(Convert.ToString(i.prio));
-                richTextBox1.AppendText("\t");
-                richTextBox1.AppendText(Convert.ToString(i.stap));
-                richTextBox1.AppendText("\t");
-                richTextBox1.AppendText(i.projectsoort);
-                richTextBox1.AppendText("           ");
-                richTextBox1.AppendText(i.projectnaam);
-
-                richTextBox1.AppendText("\n");
-            }
+            richTextBox1.AppendText("Selecteer in het menu welke projecten u van de projectsoort wilt inzien");
         }
 
         private void button10_Click(object sender, EventArgs e)

@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Headers;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using hrtool;
+using HRTOOL_CASUS;
 
 namespace HRTOOL_CASUS
 {
@@ -12,9 +14,7 @@ namespace HRTOOL_CASUS
     interface IProjectSoorten
     {
         void LaadIn();
-        void Aanmaken(Soorten soorten);
-        void Bewerken();
-        
+/*        void Aanmaken(Soorten soorten);*/
 
     }
 
@@ -23,38 +23,51 @@ namespace HRTOOL_CASUS
         public List<Soorten> Lijst = new List<Soorten>();
 
         public abstract void LaadIn();
-        public abstract void Aanmaken(Soorten soorten);
-        public abstract void Bewerken();
-        
+/*        public abstract void Aanmaken(Soorten soorten);*/
 
     }
 
     public class RaycoProjectSoorten : ProjectSoort
     {
+
         Db db = new();
+
 
         public override void LaadIn()
         {
-            Lijst = db.ReadDataProjectenSoortPI8(); 
-        }
-        public override void Aanmaken(Soorten soorten)
-        {
-            LaadIn();
-            Lijst.Add(soorten);
-
-            //functie wegschrijven naar db
+            Lijst = db.ReadDataProjectenSoortPI8();
         }
 
-        public override void Bewerken()
-        {
-            throw new NotImplementedException();
-        }
+        /*        public override void Aanmaken(Soorten soorten)
+                {
+                    LaadIn();
+                    Lijst.Add(soorten);
+
+                    //functie wegschrijven naar db
+                }*/
 
         public List<Soorten> Inzien()
-        { 
+        {
             return Lijst;
         }
 
+        public void Bewerken(string id, string naam)
+        {
+            db.BewerkProjectensoortPI8(naam, id);
+            LaadIn();
+        }
+
+        public void Delete(string id)
+        {
+            db.DeleteProjectensoortPI8(id);
+            LaadIn();
+        }
+
+        public void Create(string naam)
+        {
+            db.CreateProjectenSoortPI8(naam);
+            LaadIn();
+        }
 
     }
 
@@ -68,76 +81,6 @@ namespace HRTOOL_CASUS
             this.projectsoortnaam = projectsoortnaam;
             this.id = id;
         }
- 
+
     }
-
 }
-        /*    class ProjectSoort
-            {
-                Db db = new();
-
-
-
-                public void Aanmaken(string Projectnaam)
-                {
-                    try
-                    {
-
-                        db.AanmakenProjectSoort(Projectnaam);
-
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Vul a.u.b. de juiste gegevens in...");
-                    }
-                }
-
-                public void *//*List<string>*//* WelkeProjecten()
-                {
-                    try
-                    {
-
-                    }
-                    catch
-                    {
-
-                    }
-                }
-
-                public void *//*List<int>*//*DoorlooptijdProjectSoort()
-                {
-                    try
-                    {
-
-                    }
-                    catch
-                    {
-
-                    }
-                }
-
-                public void Bewerken()
-                {
-                    try
-                    {
-
-                    }
-                    catch
-                    {
-
-                    }
-                }
-
-                public void Verwijderen()
-                {
-                    try
-                    {
-
-                    }
-                    catch
-                    {
-
-                    }
-                }
-            }*/
-    

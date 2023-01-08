@@ -32,7 +32,8 @@ namespace hrtool
             Application.Run(dash);
 
             /*            Inloggen inlog = new Inloggen();
-                        Application.Run(inlog);*/
+                        Application.Run(inlog);
+            */
 
         }
     }

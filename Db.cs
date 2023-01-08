@@ -272,6 +272,47 @@ namespace HRTOOL_CASUS
             //sqlite_conn.Close();
         }
 
+        public void BewerkProjectensoortPI8(string naam, string id)
+        {
+            //Vanuit deze functie kan een project worden bijgewerkt
+
+            SQLiteCommand sqlite_cmd;
+            sqlite_cmd = sqlite_conn.CreateCommand();
+            sqlite_cmd.CommandText = $"UPDATE projectsoort SET naam = '"+naam+"' WHERE id = '"+id+"';";
+
+            sqlite_cmd.ExecuteNonQuery();
+
+        }
+
+        public void DeleteProjectensoortPI8(string id)
+        {
+            //Hier kan een projectsoort worden verwijderd op basis van het opgegeven ID
+
+            SQLiteDataReader sqlite_datareader;
+            SQLiteCommand sqlite_cmd;
+            sqlite_cmd = sqlite_conn.CreateCommand();
+            sqlite_cmd.CommandText = $"DELETE FROM projectsoort WHERE id= '"+id+"'";
+
+            sqlite_datareader = sqlite_cmd.ExecuteReader();
+            while (sqlite_datareader.Read())
+            {
+                string myreader = sqlite_datareader.GetString(0);
+                Console.WriteLine(myreader);
+            }
+
+        }
+
+        public void CreateProjectenSoortPI8(string naam)
+        {
+            //vanuit deze functie wordt een projectsoort toegevoegd aan de database
+
+            SQLiteCommand sqlite_cmd;
+            sqlite_cmd = sqlite_conn.CreateCommand();
+            sqlite_cmd.CommandText = $"INSERT INTO projectsoort (naam) VALUES('" + naam + " ')";
+
+            sqlite_cmd.ExecuteNonQuery();
+        }
+
         public List<Projecten> ReadDataProjectenPI8()
         {
             //Het uitlezen van de database om als object te kunnen invoegen
@@ -316,6 +357,47 @@ namespace HRTOOL_CASUS
             return Lijst;
 
             //sqlite_conn.Close();
+        }
+
+        public void BewerkProjectenPI8(string id, string naam, string duur, string duurmin, string duurmax, string prio, string stap, string projectsoort)
+        {
+            //Vanuit deze functie kan een project worden bijgewerkt
+
+            SQLiteCommand sqlite_cmd;
+            sqlite_cmd = sqlite_conn.CreateCommand();
+            sqlite_cmd.CommandText = $"UPDATE project SET naam = '" + naam + "', duur = '" + duur + "', duurmin = '"+ duurmin +"', duurmax = '"+ duurmax +"', prio = '"+ prio +"', stap = '"+ stap +"', projectsoort = '"+ projectsoort +"' WHERE id = '" + id + "';";
+
+            sqlite_cmd.ExecuteNonQuery();
+
+        }
+
+        public void DeleteProjectenPI8(string id)
+        {
+            //Hier kan een projectsoort worden verwijderd op basis van het opgegeven ID
+
+            SQLiteDataReader sqlite_datareader;
+            SQLiteCommand sqlite_cmd;
+            sqlite_cmd = sqlite_conn.CreateCommand();
+            sqlite_cmd.CommandText = $"DELETE FROM project WHERE id= '" + id + "'";
+
+            sqlite_datareader = sqlite_cmd.ExecuteReader();
+            while (sqlite_datareader.Read())
+            {
+                string myreader = sqlite_datareader.GetString(0);
+                Console.WriteLine(myreader);
+            }
+
+        }
+
+        public void CreateProjectenPI8(string naam, string duur, string duurmin, string duurmax, string prio, string stap, string projectsoort)
+        {
+            //vanuit deze functie wordt een projectsoort toegevoegd aan de database
+
+            SQLiteCommand sqlite_cmd;
+            sqlite_cmd = sqlite_conn.CreateCommand();
+            sqlite_cmd.CommandText = $"INSERT INTO project (naam,duur,duurmin,duurmax,prio,stap,projectsoort) VALUES('" + naam + "','" + duur + "','" + duurmin + "','" + duurmax + "','" + prio + "','" + stap + "','" + projectsoort + "')";
+
+            sqlite_cmd.ExecuteNonQuery();
         }
 
         public List<int> ReadInzetUren(int hrid, int weeknummer)

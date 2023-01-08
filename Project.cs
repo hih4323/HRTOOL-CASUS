@@ -32,6 +32,25 @@ namespace HRTOOL_CASUS
         {
             return Lijst;
         }
+
+        public void Bewerken(string id, string naam, string duur, string duurmin, string duurmax, string prio, string stap, string projectsoort)
+        {
+            db.BewerkProjectenPI8(id,naam,duur,duurmin,duurmax,prio,stap,projectsoort);
+            Inladen();
+        }
+
+        public void Delete(string id)
+        {
+            db.DeleteProjectenPI8(id);
+            Inladen();   
+        }
+
+        public void Create(string naam, string duur, string duurmin, string duurmax, string prio, string stap, string projectsoort)
+        {
+            db.CreateProjectenPI8(naam, duur, duurmin, duurmax, prio, stap, projectsoort);
+            Inladen();
+        }
+
     }
 
     public class Projecten
