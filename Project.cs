@@ -14,9 +14,7 @@ namespace HRTOOL_CASUS
     public abstract class Project : IProjecten
     {
         public List<Projecten> Lijst = new List<Projecten>();
-
         public abstract void Inladen();
-
     }
 
     public class RaycoProjecten : Project

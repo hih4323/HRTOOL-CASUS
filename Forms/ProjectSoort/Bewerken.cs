@@ -14,6 +14,7 @@ namespace HRTOOL_CASUS.Forms.ProjectSoort
     public partial class Bewerken : Form
     {
         private Dashboard dash;
+        RaycoProjectSoorten ps = new RaycoProjectSoorten(); 
 
         public Bewerken(Dashboard dash)
         {
@@ -42,33 +43,72 @@ namespace HRTOOL_CASUS.Forms.ProjectSoort
         {
             //inladen knop
 
-            RaycoProjectSoorten projs = new RaycoProjectSoorten();
-            projs.LaadIn();
-            List<Soorten> projectensoort = projs.Inzien();
-
-            foreach (Soorten p in projectensoort)
+            try
             {
-                if (textBox1.Text == Convert.ToString(p.id))
+                RaycoProjectSoorten projs = new RaycoProjectSoorten();
+                projs.LaadIn();
+                List<Soorten> projectensoort = projs.Inzien();
+
+                foreach (Soorten p in projectensoort)
                 {
-                    textBox2.Clear();
-                    textBox2.Text += p.projectsoortnaam;
+                    if (textBox1.Text == Convert.ToString(p.id))
+                    {
+                        textBox2.Clear();
+                        textBox2.Text += p.projectsoortnaam;
+                    }
                 }
             }
+            catch
+            {
+                MessageBox.Show("Controleer gegevens...");
+            }
+
+
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             //Verwijderen via database
+
+            try
+            {
+                string id = textBox1.Text;
+                ps.Delete(id);
+                dash.richTextBox1.Clear();
+                dash.richTextBox1.AppendText("Uw projectsoort is succesvol uit de database verwijderd");
+                this.Hide();
+            }
+            catch
+            {
+                MessageBox.Show("Controleer gegevens...");
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //aanpassen via database
+
+            //wijzigen via database
+
+            try
+            {
+                string id = textBox1.Text;
+                string naam = textBox2.Text;
+                ps.Bewerken(id, naam);
+                dash.richTextBox1.Clear();
+                dash.richTextBox1.AppendText("Uw projectsoort is succelvol gewijzigd");
+                this.Hide();
+            }
+            catch
+            {
+                MessageBox.Show("Controleer gegevens...");
+            }
+
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             this.Hide();
+            dash.richTextBox1.Clear();
         }
     }
 }

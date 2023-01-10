@@ -14,37 +14,22 @@ namespace HRTOOL_CASUS
     interface IProjectSoorten
     {
         void LaadIn();
-/*        void Aanmaken(Soorten soorten);*/
-
     }
 
     public abstract class ProjectSoort : IProjectSoorten
     {
         public List<Soorten> Lijst = new List<Soorten>();
-
         public abstract void LaadIn();
-/*        public abstract void Aanmaken(Soorten soorten);*/
-
     }
 
     public class RaycoProjectSoorten : ProjectSoort
     {
-
         Db db = new();
-
 
         public override void LaadIn()
         {
             Lijst = db.ReadDataProjectenSoortPI8();
         }
-
-        /*        public override void Aanmaken(Soorten soorten)
-                {
-                    LaadIn();
-                    Lijst.Add(soorten);
-
-                    //functie wegschrijven naar db
-                }*/
 
         public List<Soorten> Inzien()
         {

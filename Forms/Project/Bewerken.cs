@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Windows.Forms;
 
 namespace HRTOOL_CASUS.Forms.Project
@@ -13,6 +14,8 @@ namespace HRTOOL_CASUS.Forms.Project
     public partial class Bewerken : Form
     {
         private Dashboard dash;
+        RaycoProjectSoorten projs = new RaycoProjectSoorten();
+        RaycoProjecten proj = new RaycoProjecten();
 
         public Bewerken(Dashboard dash)
         {
@@ -24,7 +27,6 @@ namespace HRTOOL_CASUS.Forms.Project
 
         private void Bewerken_load(object sender, EventArgs e)
         {
-            RaycoProjectSoorten projs = new RaycoProjectSoorten();
             projs.LaadIn();
             List<Soorten> projectensoort = projs.Inzien();
 
@@ -41,9 +43,7 @@ namespace HRTOOL_CASUS.Forms.Project
 
         private void button4_Click(object sender, EventArgs e)
         {
-            //opvragen
-
-            RaycoProjecten proj = new RaycoProjecten();
+            //opvragen gegevens
             proj.Inladen();
             List<Projecten> projecten = proj.Inzien();
 
@@ -115,11 +115,51 @@ namespace HRTOOL_CASUS.Forms.Project
         private void button1_Click(object sender, EventArgs e)
         {
             //aanpassen
+
+            dash.richTextBox1.Clear();
+
+            try
+            {
+                string id = textBox1.Text;
+                string naam = textBox7.Text;
+                string duur = textBox2.Text;
+                string duurmin = textBox3.Text;
+                string duurmax = textBox4.Text;
+                string prio = textBox5.Text;
+                string stap = textBox6.Text;
+                string projectsoort = comboBox1.Text;
+
+                proj.Bewerken(id, naam, duur, duurmin, duurmax, prio, stap, projectsoort);
+                dash.richTextBox1.AppendText("Uw projectonderdeel is succesvol gewijzigd");
+                this.Hide();
+            }
+            catch
+            {
+                MessageBox.Show("Controleer gegevens...");
+            }
+
+
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             //Verwijderen
+            dash.richTextBox1.Clear();
+
+            try
+            {
+                string id = textBox1.Text;
+
+                proj.Delete(id);
+                dash.richTextBox1.AppendText("Uw projectonderdeel is succesvol uit de database verwijderd");
+                this.Hide();
+            }
+            catch
+            {
+                MessageBox.Show("Controleer gegevens...");
+            }
+
         }
 
         private void button3_Click(object sender, EventArgs e)
