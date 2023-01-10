@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="HRTOOL_CASUS.ProjectSoort">
+    <Position X="7" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ProjectSoort.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="HRTOOL_CASUS.RaycoProjectSoorten">
+    <Position X="7" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAABAAAEAAEAAAAgAAAAgAAA=</HashCode>
+      <FileName>ProjectSoort.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HRTOOL_CASUS.Soorten">
+    <Position X="9" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>ProjectSoort.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="HRTOOL_CASUS.IProjectSoorten">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ProjectSoort.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
